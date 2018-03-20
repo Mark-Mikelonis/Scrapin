@@ -1,0 +1,18 @@
+
+
+    {{#each articles}}
+        <div class="card text-white bg-dark ml-2 mr-2 mt-2 mb-2 float-left" style="width: 18rem; height:33rem; display: inline-block">
+            <img class="card-img-top" src="{{imgUrl}}" alt="Image">
+            <div class="card-body border-secondary">
+                <h6 class="card-title">{{headline}}</h6>
+                <p class="card-text">{{summary}}</p>
+                <div class="card-footer bg-transparent border-secondary" style="display: inline">
+                <a href="{{link}}" id="storyBtn" class="btn btn-primary mt-3 mb-1" target="_blank">Read Story</a>
+                <button type="button" id="noteBtn" data-id="{{_id}}" data-toggle="modal" data-target="#modal" class="btn btn-primary mt-3 mb-1">Make Note</button>
+                </div>
+            </div>
+           
+        </div>
+    {{/each}}
+
+
