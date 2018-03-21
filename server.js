@@ -36,7 +36,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {});
 
 
-app.get("/", function (req, res) {
+app.get("/scrape", function (req, res) {
     
     axios.get("https://arstechnica.com/").then(function (response) {
         var $ = cheerio.load(response.data);
