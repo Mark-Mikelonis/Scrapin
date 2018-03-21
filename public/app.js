@@ -15,11 +15,11 @@
 // });
 
 $(document).on("click","#noteBtn", function(event){
-    event.preventDefault();
+    // event.preventDefault();
     console.log("in saveNote: ");
     var id = $(this).attr("data-id");
     var note = $("#noteBody").val();
-    console.log("note: " + note);
+    alert("note: " + note);
     // $.ajax({
     //     method: "GET",
     //     url: "/articles/" + id
@@ -35,12 +35,12 @@ $(document).on("click","#noteBtn", function(event){
         method: "POST",
         url: "/notes/" + id,
         data:{
-           body: $("#noteBody").val()
+           note: $("#noteBody").val()
         }
     })
     .then(function(data){
         console.log("data: " + data.note);
-        $("#noteBtn").text("Read Note");
+        // $("#noteBtn").text("Read Note");
         // window.location.href="/articles";
 
        

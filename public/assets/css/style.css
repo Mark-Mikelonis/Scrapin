@@ -8,6 +8,9 @@
 .card-text{
     font-size: 12px;
 }
+.card-footer{
+    padding: 0; 
+}
 .display-2, .lead{
     text-align: center;
 }
