@@ -16,10 +16,10 @@
 
 $(document).on("click","#noteBtn", function(event){
     // event.preventDefault();
-    console.log("in saveNote: ");
+   
     var id = $(this).attr("data-id");
     var note = $("#noteBody").val();
-    alert("note: " + note);
+    $("#noteBody").val("");
     // $.ajax({
     //     method: "GET",
     //     url: "/articles/" + id
@@ -35,13 +35,12 @@ $(document).on("click","#noteBtn", function(event){
         method: "POST",
         url: "/notes/" + id,
         data:{
-           note: $("#noteBody").val()
+           note: note
         }
     })
     .then(function(data){
-        console.log("data: " + data.note);
-        // $("#noteBtn").text("Read Note");
-        // window.location.href="/articles";
+        
+        
 
        
 
