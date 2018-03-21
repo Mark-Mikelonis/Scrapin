@@ -71,18 +71,57 @@ app.get("/scrape", function (req, res) {
        
     });    
 });
-app.get("/articles", function(req,res){
-    db.Article.find({}).sort({_id:-1})
-        .then(function(dbArt){
-            var hbsObj = {
-                articles: dbArt
-            }
-            res.render("index", hbsObj);
-        })
-        .catch(function(err){
-            res.json(err);
+app.get("/", function(req,res){
+    axios.get("https://arstechnica.com/").then(function (response) {
+        var $ = cheerio.load(response.data);
+        
+        $("article").each(function(i, element){
+            var result = {};
+            result.headline = $(this).find("header h2 a").text().trim();
+            result.link = $(this).children("a").attr("href");
+            result.summary = $(this).find("header p").text().trim().split(".")[0];
+            result.postID = $(this).data("post-id");
+            result.imgUrl = $(this).find(".listing").attr("style").toString().split("'")[1];
+            
+            db.Article.findOne({postID: result.postID.toString()})
+                .then(function(data){
+                    if(!data){
+                        db.Article.create(result)
+                            .then(function(data){
+                            
+                                res.redirect("/articles");
+                            
+                            })
+                            .catch(function(err){
+                                return err;
+                        });
+                    }
+                })
+                .catch(function(err){
+                    return err;
+                }); 
+            
         });
-});   
+       
+    });    
+});
+
+
+
+
+
+
+//     db.Article.find({}).sort({_id:-1})
+//         .then(function(dbArt){
+//             var hbsObj = {
+//                 articles: dbArt
+//             }
+//             res.render("index", hbsObj);
+//         })
+//         .catch(function(err){
+//             res.json(err);
+//         });
+// });   
 app.get("/articles/:id", function(req,res){
     db.Article.findOne({_id: req.params.id})
         .populate("note")
