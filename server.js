@@ -36,7 +36,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {});
 
 
-app.get("/", function (req, res) {
+app.get("/scrape", function (req, res) {
     
     axios.get("https://arstechnica.com/").then(function (response) {
         var $ = cheerio.load(response.data);
@@ -72,7 +72,7 @@ app.get("/", function (req, res) {
     });    
 });
 app.get("/articles", function(req,res){
-    db.Article.find({})//.sort({_id:-1})
+    db.Article.find({}).sort({_id:-1})
         .then(function(dbArt){
             var hbsObj = {
                 articles: dbArt
@@ -87,7 +87,8 @@ app.get("/articles/:id", function(req,res){
     db.Article.findOne({_id: req.params.id})
         .populate("note")
         .then(function(dbArt){
-            return data;
+            console.log(dbArt);
+            res.json(dbArt);
         })
         .catch(function(err){
             return err;
