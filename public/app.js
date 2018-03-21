@@ -26,7 +26,7 @@ $(document).on("click","#noteBtn", function(event){
     // })
     // .then(function(data){
     //     if(data.note){
-    //         $("#noteBody").val(data.note);
+    //         $("#notes").val(data.note);
 
     //     }
     // });
