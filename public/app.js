@@ -1,19 +1,4 @@
 
-
-// $(document).ready( function(event){
-    
-    // $.ajax({
-    //     method: "GET",
-    //     url: "/articles/" + id
-    // })
-    // .then(function(data){
-    //     if(data.note){
-    //         $("#noteBody").val(data.note.note);
-
-    //     }
-    // });    
-// });
-
 $(document).on("click","#noteBtn", function(event){
     // event.preventDefault();
    
