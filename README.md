@@ -11,7 +11,7 @@ The Scrapinator is a web scraper using MongoDB, Mongoose, Node, Express, Cheerio
   * You will be presented with the most current articles from the website
     * There will be a Title, Summary, Link to the article as well as an option to make and save notes for each article.
 
-![Scrapinator ](https://github.com/Mark-Mikelonis/Scrapinator/tree/master/public/assets/images/scrapinator.png)
+![Scrapinator ](/public/assets/images/scrapinator.png)
 
 
 ## INSTRUCTIONS FOR USING THE WEB APP
